@@ -1,5 +1,5 @@
-#/cache/*
-#/upload/*
+/cache/*
+/upload/*
 /nbproject/*
 /config/mysql.php
 /config/init.php
