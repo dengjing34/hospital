@@ -21,5 +21,9 @@ return array(
         'text' => '我的借阅',
         'url' => 'borrow',
     ),
+    'quit' => array(
+        'text' => '退出登录',
+        'url' => 'quit',
+    ),
 );
 ?>

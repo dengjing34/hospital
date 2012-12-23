@@ -183,6 +183,12 @@ class User extends Data {
     public function getDept() {
         return self::$_dept[$this->job];
     }
+    
+    public function operationCount() {
+        $o = new Operation();
+        $o->mainDoctor = $this->alias;
+        return $o->count();
+    }
 
 }
 

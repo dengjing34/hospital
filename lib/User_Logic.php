@@ -1,6 +1,14 @@
 <?php
 //dengjing34@vip.qq.com
 class User_Logic {
+    private static $cookieFields = array(
+        '_userName' => 'userName',
+        '_userId' => 'id',
+        '_userRole' => 'role',
+        '_userRoleId' => 'roleId',
+        '_userAccess' => 'access',
+        '_userAlias' => 'alias',
+    );
     
     function login($username, $password) {
         $result = false;
@@ -27,6 +35,7 @@ class User_Logic {
                 Cookie::set('_userRole', $result[0]->role, 86400);
                 Cookie::set('_userRoleId', $result[0]->roleId, 86400);
                 Cookie::set('_userAccess', $role->access, 86400);
+                Cookie::set('_userAlias', $result[0]->alias, 86400);
                 $result = true;
             }
         } catch (Exception $e) {
@@ -36,9 +45,15 @@ class User_Logic {
     }
 
     function quit() {
-        foreach (array('_userName', '_userId', '_userRole', '_userRoleId', '_userAccess') as $v) {
+        foreach (array_keys(self::$cookieFields) as $v) {
             Cookie::delete($v);
         }
+    }
+    
+    function getUserCookie() {        
+        $result = array();
+        foreach (self::$cookieFields as $k => $v) $result[$v] = Cookie::get($k);
+        return $result;
     }
 }
 ?>

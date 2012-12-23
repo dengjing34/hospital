@@ -40,13 +40,16 @@ pre,p{line-height:24px;}
 /*#header*/
 #header{height:22px;width:100%;z-index:3;}
 #header #nav{line-height:22px;background:url(../images/new/index_nav_bg.jpg);height:22px;margin:0px auto;width:1000px;position:relative;}
-#header #nav-inner{position:absolute;right:64px;}
+#header #nav-user{position:absolute;left:30px;color:whitesmoke;text-shadow:0 2px 3px #D0C497;}
+#header #nav-inner{position:absolute;right:30px;}
 #header #nav-inner ul li{float:left;}
 #header #nav-inner ul li label{color:whitesmoke;text-shadow:0 2px 3px #D0C497;padding:0 5px;}
 #header #nav-inner ul li a:link,#header #nav-inner ul li a:visited,#header #nav-inner ul li a:hover,#header #nav-inner ul li a:active{background:url(../images/new/nav_bg.png) no-repeat;font-size:12px;width:89px;height:22px;text-transform: capitalize;color:white;text-decoration:none;display:block;text-align:center;}
 #header #nav-inner ul li a:hover{background:url(../images/new/nav_bg_current.png) no-repeat;-webkit-transition:color .9s linear;-moz-transition:color .9s linear;}
 #header #nav-inner ul li a.home:link,#header #nav-inner ul li a.home:visited,#header #nav-inner ul li a.home:hover,#header #nav-inner ul li a.home:active{}
 #header #nav-inner ul li a.current:link,#header #nav-inner ul li a.current:visited,#header #nav-inner ul li a.current:hover,#header #nav-inner ul li a.current:active{background:url(../images/new/nav_bg_current.png) no-repeat;color: whitesmoke;}
+#header #nav-inner ul li button{background:url(../images/new/nav_bg.png) no-repeat;height:22px;width:87px;border:none;color:white;cursor:pointer;}
+#header #nav-inner ul li button:hover{background:url(../images/new/nav_bg_current.png);}
 /*#wrapper*/
 #wrapper{width:1000px;margin:22px auto 22px auto;background:url(../images/new/bg.jpg);z-index:1;}
 #wrapper #container{padding:30px;}
@@ -76,7 +79,7 @@ pre,p{line-height:24px;}
 .listing-4 dl dd{padding:0 0 2px 0;}
 .listing-4 dl dd span{display:block;color:#4CC3D4;padding:0 0 2px 0;}
 .listing-4 .line{background:url(../images/new/lb_main_line.png);height:11px;clear:both;}
-.book{background:url(../images/new/ny_main_bg) no-repeat;width:808px;height:473px;}
+.book{background:url(../images/new/ny_main_bg.png) no-repeat;width:808px;height:473px;}
 .book .left-page{float:left;width:375px;height:453px;padding:20px;}
 .book .left-page .top-pt{width:370px;}
 .book .left-page .top-pt dt{background:url(../images/new/pic2_border.jpg) no-repeat;width:208px;height:247px;padding:4px;float:left;}
@@ -86,8 +89,17 @@ pre,p{line-height:24px;}
 .book .left-page .bottom-pt{clear:both;overflow-y:auto;overflow-x:hidden;height:185px;width:360px;}
 .book .left-page .bottom-pt div,.book .left-page .bottom-pt p{line-height:20px;}
 
-.book .right-page{float:right;width:393px;height:473px;}
+.book .right-page{float:right;width:353px;height:473px;padding:5px 20px;}
+.book .right-page dl{float:left;width:353px;height:159px;}
+.book .right-page dt{float:left;padding-right:10px;}
+.book .right-page dd{padding:0 0 3px 0;}
+.book .right-page dd span{display:block;color:#4CC3D4;padding:0 0 3px 0;}
 
+.book-two{background:url(../images/new/ny_main_bg2.png) no-repeat;width:808px;height:473px;padding:10px;}
+.book-two dl{float:left;width:370px;height:150px;float:left;margin:0 0 5px 25px;}
+.book-two dl dt{float:left;padding-right:10px;}
+.book-two dl dd{padding:0 0 3px 0;}
+.book-two dl dd span{display:block;color:#4CC3D4;padding:0 0 3px 0;}
 #wrapper #container #works-preview dl dd{width:210px;vertical-align:middle;}
 /*.project-intro*/
 .project-intro{margin:15px auto 0 auto;width:1000px;text-align:center;position:relative;}

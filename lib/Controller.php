@@ -118,10 +118,15 @@ class Controller {
         if (isset($config['nav'])) {
             $navHtml = $config['nav'];
         } elseif ($this->auth()) {
-            $nav = new View("base/nav", compact('navigator', 'controller'));
+            $userLogic = new User_Logic();
+            $userInfo = $userLogic->getUserCookie();            
+            $nav = new View("base/nav", compact('navigator', 'controller', 'userInfo'));
             $navHtml = $nav->render();            
         } else {
-            $nav = new View('base/login');
+            $loginFields = array_intersect_key(User::$formFields, array_flip(array('userName', 'password')));
+            $form = new Form($loginFields);
+            $validScripts = $form->createScripts();            
+            $nav = new View('base/login', compact('validScripts'));
             $navHtml = $nav->render();
         }       
         $currentFilter = !is_null($sort = $this->url->get('sort')) && $this->url->segment(1) == 'search' ? $sort : null;
