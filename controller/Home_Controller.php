@@ -2,8 +2,9 @@
 //dengjing34@vip.qq.com
 class Home_Controller extends Controller{
     function  __construct() {
-        $this->noCache();
+        $this->noCache();        
         parent::__construct();
+        $this->validateLogin();
     }
     
     function index() {

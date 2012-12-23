@@ -9,17 +9,8 @@ class Chibi_Controller extends Controller{
         parent::__construct();    
     }
 
-    private function validateLogin() {
-        $loginFlag = true;
-        $validateFileds = array('_userName', '_userId', '_userRole', '_userRoleId', '_userAccess');
-        foreach ($validateFileds as $val) {
-            $this->{$val} = Cookie::get($val);
-            if (is_null($this->{$val})) {
-                $loginFlag = false;
-                break;
-            }
-        }
-        if (!$loginFlag) {
+    protected function validateLogin() {
+        if (!$this->auth()) {
             Url::redirect(Url::siteUrl('chibi'));
         }
     }

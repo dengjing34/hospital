@@ -8,6 +8,23 @@ class Controller {
         $this->className = get_class($this);
         header("Content-type:text/html; charset=utf-8");
     }
+    
+    protected function auth() {
+        $loginFlag = true;
+        $validateFileds = array('_userName', '_userId', '_userRole', '_userRoleId', '_userAccess');
+        foreach ($validateFileds as $val) {
+            $this->{$val} = Cookie::get($val);
+            if (is_null($this->{$val})) {
+                $loginFlag = false;
+                break;
+            }
+        }
+        return $loginFlag;       
+    }
+    
+    protected function validateLogin() {
+        if ($this->url->segment(1) && !$this->auth()) $this->error('没有权限', '此页面需要登录后才能查看');
+    }
 
     //set client browser no cache
     protected function noCache() {
@@ -100,10 +117,13 @@ class Controller {
         $baseHtml = $navHtml = '';
         if (isset($config['nav'])) {
             $navHtml = $config['nav'];
-        } else {
+        } elseif ($this->auth()) {
             $nav = new View("base/nav", compact('navigator', 'controller'));
             $navHtml = $nav->render();            
-        }        
+        } else {
+            $nav = new View('base/login');
+            $navHtml = $nav->render();
+        }       
         $currentFilter = !is_null($sort = $this->url->get('sort')) && $this->url->segment(1) == 'search' ? $sort : null;
         $header = new View('base/header', compact('navHtml', 'controller', 'conf', 'siteName', 'filter', 'currentFilter'));
         $baseHtml .= $header->render();
