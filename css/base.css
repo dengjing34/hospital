@@ -6,7 +6,8 @@ caption,th {text-align: left;}
 h1,h2,h3,h4,h5,h6 {font-weight: normal;font-size: 100%;}
 abbr,acronym { border: 0;}
 select{font-size:14px;}
-a:link{ color:#666;text-decoration:none;}a:visited{color:#666;text-decoration:none;}a:hover{color:#838383;text-decoration:none;}a:active{color:#666;text-decoration:none;}
+button{cursor:pointer;}
+a:link{ color:#0077aa;text-decoration:none;}a:visited{color:#0077aa;text-decoration:none;}a:hover{color:#FF9838;text-decoration:none;}a:active{color:#0077aa;text-decoration:none;}
 a.common:link{ font-size: 14px;color:green;text-decoration:none;padding:0;}
 a.common:visited{color:green;text-decoration:none;padding:0;}
 a.common:hover{color:orangered;background:none;padding:0;text-decoration:underline;}
@@ -28,7 +29,7 @@ a.like:link,a.like:visited,a.like:hover,a.like:active{font-weight:normal;text-in
 a.like:hover{background-position:0px -16px;}
 a.liked:link,a.liked:visited,a.liked:hover,a.liked:active{font-weight:normal;text-indent:16px;height:16px;background:url(../images/like_export.png) no-repeat 0px -16px;display:inline-block;}
 /*.pager*/
-.pager{clear:both;padding:0;height:30px;line-height:30px;margin:5px 0 5px 10px;text-align: right;}
+.pager{clear:both;padding:0;height:30px;line-height:30px;margin:5px 0 5px 10px;text-align:left;}
 .pager span{color:#FF9838;border-radius:2px;padding:4px 8px;}
 .pager span.dots{padding:4px 0;background:none;border:none;}
 .pager a:link,.pager a:visited,.pager a:hover,.pager a:active{color:#fff;background:#FF9838;border:1px solid #CCC;padding:4px 8px;border-radius:2px;text-decoration:none;}
@@ -167,3 +168,13 @@ pre,p{line-height:24px;}
 .ie6_height .br {bottom: -1px;}
 .ie6_height .bl {bottom: -1px;}
 /* @end */
+
+/*.grid start*/
+.grid{width:100%;margin:0px auto;border-collapse:collapse;}
+.grid td{border:1px solid #C3C3C3;height:25px;line-height: 25px;padding:7px;vertical-align:middle;text-shadow:0 1px 0 #FFFFFF;}
+.grid td input{margin:0 3px;vertical-align:middle;}
+.grid td a.button{color:#fff;}
+.grid tr:hover{background:#e8eaef;-webkit-transition:background .4s linear;-moz-transition:background .4s linear;}
+.grid .trTitle{color:#222;font-weight:bold;height:25px;background:url(../images/chibi/table-head-bg.png) repeat-x;}
+.grid .trBg{background:#C5DDF2 ;border-top:0px;font-weight:bold;}
+/*.grid end*/

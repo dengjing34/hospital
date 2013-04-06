@@ -153,6 +153,7 @@ class Data {
 				array(
 				    'limit' => 'LIMIT 1000',
 				    'order' => "ORDER BY `{$columns[$key]}` DESC",
+                    'where' => isset($options['where']) && $options['where'] ? "WHERE {$options['where']}" : null,
 				)
 		);
 		$colstr = implode('`, `', $columns);
@@ -222,7 +223,7 @@ class Data {
 		}
 		$this->connection = DataConnection::getConnection();
 
-		$clauses = $this->clause($options);
+		$clauses = $this->clause($options, isset($options['where']) && $options['where'] ? array('where' => 'WHERE ' . $options['where']): array());
 
 		$this->sql = "SELECT COUNT(1) FROM `" . $this->table . "` {$clauses['index']} {$clauses['where']}";
 
@@ -419,5 +420,8 @@ class Data {
 		return array_filter($keys);
 	}
 
+    public static function genCacheKey($prefix, $suffix) {
+        return $prefix . $suffix;
+    }
 }
 ?>

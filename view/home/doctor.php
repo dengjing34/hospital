@@ -16,17 +16,18 @@
     <div class="right-page">
         <?php
         $html = array();
-        foreach ($operations as $operation) {        
+        /*@var $operation Operations*/
+        foreach ($operations as $operation) {
             $html[] = '<dl>';
-            $html[] = "<dt><a href=\"" . Url::siteUrl("view?id={$o->id}") . "\"><img src=\"" . Url::siteUrl('images/new/ny_main_sp_1.jpg') . "\" /></a></dt>";
-            $html[] = "<dd><span>医生名称：</span>{$operation->mainDoctor}</dd>";
-            $html[] = "<dd><span>患者名称：</span>{$operation->mainDoctor}</dd>";
+            $html[] = "<dt><a href=\"" . Url::siteUrl("view?id={$operation->optGUID}") . "\"><img src=\"" . Url::siteUrl('images/new/ny_main_sp_1.jpg') . "\" /></a></dt>";
+            $html[] = "<dd><span>医生名称：</span>{$operation->optDocName}</dd>";
+            $html[] = "<dd><span>患者名称：</span>{$operation->getPatient()->patName}</dd>";
             $html[] = "<dd><span>日期：</span>{$operation->getDate()}</dd>";
-            $html[] = "<dd><span>病例名称：</span>{$operation->name}</dd>";
+            $html[] = "<dd><span>病例名称：</span>{$operation->optZDName}</dd>";
             $html[] = "</dl>";
         }
         echo implode("\n", $html);
-        ?>        
+        ?>
     </div>
     <div class="clear"></div>
 </div>

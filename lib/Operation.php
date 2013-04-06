@@ -2,7 +2,7 @@
 //dengjing34@vip.qq.com
 class Operation extends Data{
     public $id, $mainDoctor, $mazuishi, $assDoctor, $nurse, $zhenduan, $date, $name, $mazuifangshi, $attributeData;
-    
+
     function __construct() {
         $options = array(
             'key' => 'id',
@@ -30,7 +30,7 @@ class Operation extends Data{
         );
         parent::init($options);
     }
-    
+
     public function getDate($format = 'Y年n月j日') {
         return date($format, strtotime($this->date));
     }

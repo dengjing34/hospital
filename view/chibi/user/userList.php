@@ -37,13 +37,14 @@ $emptyMsg = $dataList = null;
 if (empty($objs)) {
     $emptyMsg = '<div class="emptyMsg">暂无数据</div>' . "\n";
 } else {
+    /*@var $obj User*/
     foreach ($objs as $obj) {
         $dataList .= "<tr>\n";
         $dataList .= "<td><input type=\"checkbox\" name=\"id[]\" value=\"{$obj->id}\" />{$obj->id}</td>\n";
         $dataList .= "<td><a class=\"button button-orange\" href=\"" . Url::siteUrl("chibi/user/userModify?id={$obj->id}")  . "\"><span class=\"pencil\"></span>编辑</a></td>\n";
         $dataList .= "<td><a href=\"".Url::siteUrl("chibi/user/userModify?id={$obj->id}")."\">{$obj->userName}</a></td>\n";
         $dataList .= "<td>{$obj->alias}</td>\n";
-        $dataList .= "<td>". User::$_dept[$obj->dept] ." - " . User::$_job[$obj->job] . "</td>\n";
+        $dataList .= "<td>{$obj->getDept()} - {$obj->getJob()}</td>\n";
         $dataList .= "<td>{$obj->mobile}</td>\n";
         $dataList .= "<td>{$obj->email}</td>\n";
         $dataList .= "<td>" . User::$_sex[$obj->sex] . "</td>\n";

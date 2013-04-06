@@ -9,7 +9,7 @@
 <meta name="keywords" content="<?=$conf['keywords']?>" />
 <meta name="description" content="<?=$conf['description']?>"/>
 <link rel="stylesheet" media="screen" href="<?=Url::siteUrl('css/base.css')?>" />
-<link rel="shortcut icon" href="<?=Url::siteUrl('images/favicon.ico');?>" /> 
+<link rel="shortcut icon" href="<?=Url::siteUrl('images/favicon.ico');?>" />
 <!--[if IE 6]>
 <style type="text/css">
 * html,* html body   /* IE6 Fixed Position Jitter Fix */{background-image:url(about:blank);background-attachment:fixed;}
@@ -30,8 +30,8 @@ $(function(){
 </head>
 <body>
 
-<div id="header" class="fixed-top fixed-left">    
-    <?=$navHtml?>            
+<div id="header" class="fixed-top fixed-left">
+    <?=$navHtml?>
 </div>
 <div id="wrapper">
     <div id="container">
@@ -45,7 +45,7 @@ $(function(){
                     <li>Mauris ullamcorper euismod leo. Nulla congue tellus vitae ante at pede eu ligula lacinia. Integer sed sapien, rutrum nec.</li>
                     <li>Aliquam erat volutpat. Fusce dolor. Vestibulum ornare congue turpis sollicitudin nunc elit. Nullam erat neque, facilisis quis.</li>
                     <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam non eros sed facilisis, bibendum eu.</li>
-                </ul>                
+                </ul>
             </div>
         </div>
         <div id="filter">
@@ -54,7 +54,7 @@ $(function(){
                 $filers = array();
                 foreach($filter as $filterName => $filterText) {
                     $className = $currentFilter == $filterName ? "{$filterName}-curr" : $filterName;
-                    $filters[] = "<li><a title=\"{$filterText}\" class=\"{$className}\" href=\"" . Url::siteUrl("search?sort={$filterName}") . "\">{$filterText}</a></li>";
+                    $filters[] = "<li><a title=\"{$filterText}\" class=\"{$className}\" href=\"" . Url::siteUrl("search/{$filterName}") . "\">{$filterText}</a></li>";
                 }
                 echo join("\n", $filters);
                 ?>

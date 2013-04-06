@@ -15,13 +15,13 @@ class User_Controller extends Chibi_Controller {
         $form = new Form(User::$formFields);
         $form->set('sex', array('options' => User::$_sex));
         $form->set('status', array('options' => User::$_status));
-        $form->set('job', array('options' => User::$_job));
-        $form->set('dept', array('options' => User::$_dept));
+        $form->set('job', array('options' => Job::getJobOptions()));
+        $form->set('dept', array('options' => Dept::getDeptOptions()));
         if ($this->url->post('submit')) {
             $validateResult = $form->validatePost();
             if($validateResult['error']) {
                 $this->_error($validateResult['error']);return;
-            }            
+            }
             foreach ($validateResult['fields'] as $k => $v) {
                 $_obj->set($k, $v);
             }
@@ -48,7 +48,7 @@ class User_Controller extends Chibi_Controller {
 
     function userList() {
         $_obj = new User();
-        if ($ids = $this->url->post('id')) {
+        if (($ids = $this->url->post('id'))) {
             foreach ($ids as $id) {
                 try {$_obj->delete($id);} catch (Exception $e) {$this->_error($e->getMessage());return;}
             }
@@ -89,8 +89,8 @@ class User_Controller extends Chibi_Controller {
         $form = new Form(User::$formFields);
         $form->set('sex', array('options' => User::$_sex));
         $form->set('status', array('options' => User::$_status));
-        $form->set('job', array('options' => User::$_job));
-        $form->set('dept', array('options' => User::$_dept));
+        $form->set('job', array('options' => Job::getJobOptions()));
+        $form->set('dept', array('options' => Dept::getDeptOptions()));
         try {
             $_obj->load();
         } catch (Exception $e) {
@@ -113,7 +113,7 @@ class User_Controller extends Chibi_Controller {
             } catch (Exception $e) {
                 $this->_error($e->getMessage());return;
             }
-        }        
+        }
         $role = new Role();
         $result = $role->find();
         $roleOptions = array();

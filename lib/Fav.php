@@ -14,6 +14,8 @@ class Fav extends Data {
                 'operationId' => 'operation_id',
             ),
             'saveNeeds' => array(
+                'userId',
+                'operationId',
             )
         );
         parent::init($options);

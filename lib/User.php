@@ -10,24 +10,16 @@ class User extends Data {
 
     const SEX_MALE = 1;
     const SEX_FEMAL = 2;
-    
-    const JOB_WAI_KE_ZHU_REN = 1;
-    
-    const DEPT_NAO_WAI_KE = 1;
-    
+
     public static $_status = array(
         self::STATUS_ACTIVE => '正常',
         self::STATUS_LEAVE => '暂停',
         self::STATUS_STOP => '冻结',
     );
-    
-    public static $_job = array(
-        self::JOB_WAI_KE_ZHU_REN => '外科主任',
-    );
-    
-    public static $_dept = array(
-        self::DEPT_NAO_WAI_KE => '脑外科',
-    );
+
+    public static $_job = array();
+
+    public static $_dept = array();
 
 
     public static $formFields = array(
@@ -114,10 +106,10 @@ class User extends Data {
         $insertFlag = false;
         if (!preg_match("/^1[358]\d{9}$/", $this->mobile)) throw new Exception("mobile:{$this->mobile} is not a regular mobile!");
         if (!preg_match("/^[a-zA-Z0-9_\.\-]+\@([a-zA-Z0-9\-]+\.)+[a-zA-Z0-9]{2,4}$/", $this->email)) throw new Exception("email:{$this->email} is not a regular email address!");
-        if (is_null($this->roleId)) throw new Exception("please select a role for {$this->userName}");        
+        if (is_null($this->roleId)) throw new Exception("please select a role for {$this->userName}");
         if (is_null($this->id)) {
             $this->password = md5($this->userName . $this->password);
-            $this->createdTime = $this->updatedTime = time();      
+            $this->createdTime = $this->updatedTime = time();
             foreach (array ('userName', 'mobile', 'email') as $val) {
                 $obj = new $this->className;
                 $obj->$val = $this->$val;
@@ -166,27 +158,31 @@ class User extends Data {
 
         parent::delete($value);
     }
-    
+
     public function getAvatarUrl() {
         return Url::fileUrl($this->avatar);
     }
-    
+
     public function getAvatarImage(){
         $src = $this->getAvatarUrl();
         return $src ? "<img src=\"{$src}\" />" : null;
     }
-    
+
     public function getJob() {
+        if (self::$_job) return self::$_job[$this->job];
+        self::$_job = Job::getJobOptions();
         return self::$_job[$this->job];
     }
-    
+
     public function getDept() {
-        return self::$_dept[$this->job];
+        if (self::$_dept) return self::$_dept[$this->dept];
+        self::$_dept = Dept::getDeptOptions();
+        return self::$_dept[$this->dept];
     }
-    
+
     public function operationCount() {
-        $o = new Operation();
-        $o->mainDoctor = $this->alias;
+        $o = new Operations();
+        $o->optDocName = $this->alias;
         return $o->count();
     }
 
