@@ -2,6 +2,7 @@
 //dengjing34@vip.qq.com
 class Home_Controller extends Controller{
     function  __construct() {
+        $this->noCache();
         parent::__construct();
         $this->validateLogin();
     }
@@ -129,6 +130,8 @@ class Home_Controller extends Controller{
     }
 
     function view() {
+        $userLogic = new User_Logic();
+        $user = $userLogic->getUserCookie();
         $id = $this->url->get('id');
         $vid = $this->url->get('vid');
         if (!ctype_digit($id)) {
@@ -146,10 +149,14 @@ class Home_Controller extends Controller{
             } elseif (!empty($videos)) {
                 $currVideo = current($videos);
             }
+            $f = new Fav();
+            $f->userId = $user['id'];
+            $f->operationId = $id;
+            $fav = $f->exists();
         } catch (Exception $e) {
             $this->error($e->getMessage());
         }
-        $view = new View('home/view',  compact('o', 'videos', 'currVideo'));
+        $view = new View('home/view',  compact('o', 'videos', 'currVideo', 'user', 'fav'));
         $this->render($view->render());
     }
 }

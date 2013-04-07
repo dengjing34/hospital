@@ -1,11 +1,12 @@
 <?php
 //dengjing34@vip.qq.com
 class Ajax_Controller extends Controller{
-    
+
     function __construct() {
+        $this->noCache();
         parent::__construct();
     }
-    
+
     private function output($msg) {
         if (is_array($msg)) {
             echo json_encode($msg);
@@ -13,28 +14,37 @@ class Ajax_Controller extends Controller{
             echo $msg;
         }
     }
-    
-    function index() {
-        $this->fork();        
+
+    public function index() {
+        $this->fork();
     }
-    
-    function heart() {
-        $params = array(
-            'id',
-        );
-        $output = array('result' => 'failed', 'msg' => '');
-        foreach ($params as $val) ${$val} = $this->url->post($val);
-        if (is_numeric($id)) {
-            try {
-                Works::heartIncrease($id);
-                $output['result'] = 'successed';
-            } catch (Exception $e) {
-                $output['msg'] = $e->getMessage();
-            }                
-        } else {
-            $output['msg'] = 'id is not a numeric';
+
+    public function favAdd() {
+        $json = array();
+        $userId = $this->url->get('userId');
+        $operationId = $this->url->get('operationId');
+        try {
+            Fav::addFave($userId, $operationId);
+            $json['status'] = 'success';
+        } catch (Exception $e) {
+            $json['msg'] = $e->getMessage();
+            $json['status'] = 'fail';
         }
-        $this->output($output);
+        $this->output($json);
+    }
+
+    public function favCancel() {
+        $json = array();
+        $userId = $this->url->get('userId');
+        $operationId = $this->url->get('operationId');
+        try {
+            Fav::cancelFav($userId, $operationId);
+            $json['status'] = 'success';
+        } catch (Exception $e) {
+            $json['msg'] = $e->getMessage();
+            $json['status'] = 'fail';
+        }
+        $this->output($json);
     }
 }
 

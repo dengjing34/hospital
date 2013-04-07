@@ -5,7 +5,7 @@
  * @author dengjing
  */
 class Video extends Data {
-    public $videoGUID, $optGUID, $videoTitle, $saveIP, $fileName, $filePath, $beginTM, $endTM, $fielSize, $playLen;
+    public $videoGUID, $optGUID, $videoTitle, $saveIP, $fileName, $filePath, $beginTM, $endTM, $fileSize, $playLen;
 
     const PLAYER_WIDTH = 545;
     const PLAYER_HEIGHT = 410;
@@ -73,6 +73,31 @@ EOT;
         $o->videoGUID = $this->videoGUID;
         $result = $o->find(array('limit' => 1));
         return !empty($result) ? current($result) : $o;
+    }
+
+    public function getFileSize() {
+        return ceil((int)$this->fileSize / (1024 * 1024)) . 'M';
+    }
+
+    public function getBeginTM() {
+        return date('Y-m-d H:i:s', $this->beginTM);
+    }
+
+    public function getEndTM() {
+        return date('Y-m-d H:i:s', $this->endTM);
+    }
+
+    public function getPlayLen() {
+        if ($this->playLen < 60) {
+            return $this->playLen . '秒';
+        } elseif ($this->playLen < 3600) {
+            return floor($this->playLen / 60) . '分' . ($this->playLen % 60) . '秒';
+        } else {
+            $h = floor($this->playLen / 3600);
+            $m = floor(($this->playLen - $h * 3600) / 60);
+            $s = $this->playLen - $h * 3600 - $m * 60;
+            return "{$h}时{$m}分{$s}秒";
+        }
     }
 }
 

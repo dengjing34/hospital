@@ -178,3 +178,9 @@ pre,p{line-height:24px;}
 .grid .trTitle{color:#222;font-weight:bold;height:25px;background:url(../images/chibi/table-head-bg.png) repeat-x;}
 .grid .trBg{background:#C5DDF2 ;border-top:0px;font-weight:bold;}
 /*.grid end*/
+
+.video-list{background:#cce8de;width:250px;height:400px;float:right;padding:5px 5px;overflow-y:auto;overflow-x:hidden;}
+.video-list dl{float:left;width:250px;height:159px;}
+.video-list dt{float:left;padding-right:10px;}
+.video-list dd{padding:0 0 3px 0;}
+.video-list dd span{display:block;color:#4CC3D4;padding:0 0 3px 0;}

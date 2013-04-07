@@ -133,8 +133,8 @@ class Controller {
         $header = new View('base/header', compact('navHtml', 'controller', 'conf', 'siteName', 'filter', 'currentFilter'));
         $baseHtml .= $header->render();
         $baseHtml .= $html;
-        $analyticsCode = Analytics::code();
-        $footer = new View('base/footer', compact('analyticsCode'));
+        //$analyticsCode = Analytics::code();
+        $footer = new View('base/footer');
         $baseHtml .= $footer->render();
         echo $baseHtml;
     }

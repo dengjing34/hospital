@@ -21,6 +21,7 @@
 <![endif]-->
 <script type="text/javascript" src="<?=Url::siteUrl('js/jquery-1.5.2.min.js')?>"></script>
 <script type="text/javascript" src="<?=Url::siteUrl('js/jquery.marquee.min.js')?>"></script>
+<script type="text/javascript" src="<?=Url::siteUrl('js/main.js')?>"></script>
 <script type="text/javascript">
 var baseUrl = '<?=BASEURL?>';
 $(function(){
