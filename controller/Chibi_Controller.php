@@ -6,7 +6,7 @@ class Chibi_Controller extends Controller{
 
     function  __construct() {
         $this->noCache();// no cache in Chibi_Controller pages
-        parent::__construct();    
+        parent::__construct();
     }
 
     protected function validateLogin() {
@@ -15,7 +15,7 @@ class Chibi_Controller extends Controller{
         }
     }
 
-    function render ($html = null) {
+    function render ($html = null, $config = array()) {
         header('Content-type:text/html; charset=utf-8');
         $baseHtml = '';
         $header = new View('chibi/base/header');
@@ -32,7 +32,7 @@ class Chibi_Controller extends Controller{
         echo $baseHtml;
     }
 
-    private function getCurrAccess($item, $key, $access) {        
+    private function getCurrAccess($item, $key, $access) {
         foreach ($item['children'] as $v) {
             if ($v['name'] == $access) {
                 $this->currAccess = $v;return;
@@ -79,11 +79,11 @@ class Chibi_Controller extends Controller{
         $this->_title = implode(' - ', $title);
         foreach (array_keys($allAccess) as $v1) {
             if (!in_array($v1, $userAccess)) {
-				unset ($allAccess[$v1]);continue;				
-			}                        
+				unset ($allAccess[$v1]);continue;
+			}
             foreach(array_keys($allAccess[$v1]['children']) as $v2){
                 if (!in_array($v2, $userAccess)) {
-					unset ($allAccess[$v1]['children'][$v2]);continue;					
+					unset ($allAccess[$v1]['children'][$v2]);continue;
 				}
                 foreach(array_keys($allAccess[$v1]['children'][$v2]['children']) as $v3){
                     if (!in_array($v3, $userAccess)) unset ($allAccess[$v1]['children'][$v2]['children'][$v3]);
@@ -112,7 +112,7 @@ class Chibi_Controller extends Controller{
     }
 
     function index() {
-        $uri = array_filter(explode('/', current(explode('?', $_SERVER['REQUEST_URI']))));        
+        $uri = array_filter(explode('/', current(explode('?', $_SERVER['REQUEST_URI']))));
         $defaultController = isset ($uri[2]) ? ucfirst($uri[2]) . '_Controller' : DEFAULT_CONTROLLER;
         $defaultMethod = isset($uri[3]) ? $uri[3] : DEFAULT_METHOD;
         if (is_file(CONTROLLER_DIR . 'chibi/' .$defaultController . '.php')) require_once CONTROLLER_DIR . 'chibi/' . $defaultController . '.php';
