@@ -43,11 +43,11 @@ class Video extends Data {
     public function playerScript($container = self::PLAYER_WRAPPER, $width = self::PLAYER_WIDTH, $height = self::PLAYER_HEIGHT) {
         $swfobject = Url::siteUrl('js/swfobject.js');
         $playswf = '/images/player.swf';
-        $filePath = $this->filePath . $this->fileName;
-        $realFile = is_file($filePath) ? Url::filePath($this->fileName) : Url::siteUrl(self::PLAYER_DEFAULT_VIDEO);
+        $filePath = $this->filePath . '/' . $this->fileName;
+        $realFile = Url::videoUrl($filePath);
         $pic = $this->getPreview();
-        $picPath = $pic->filePath . $pic->fileName;
-        $preview = is_file($picPath) ? Url::filePath($pic->fileName) : Url::siteUrl(self::PLAYER_DEFAULT_PREVIEW);
+        $picPath = $pic->filePath . '/' . $pic->fileName;
+        $preview = Url::videoUrl($picPath);
         $html = <<<EOT
 <script type='text/javascript' src='{$swfobject}'></script>
 <script type='text/javascript'>

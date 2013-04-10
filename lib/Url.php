@@ -30,6 +30,10 @@ class Url {
     public static function fileUrl($filePath) {
         return UPLOAD_URL . $filePath;
     }
+	
+	public static function videoUrl($filePath) {
+        return VIDEO_URL . preg_replace('/.*手术室1\//', '', $filePath);
+    }
     
     private static function generateImage($filePath, $type) {
         $pathArray = explode('.', $filePath);        
