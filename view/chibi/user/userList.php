@@ -25,6 +25,7 @@ $emptyMsg = $dataList = null;
                 <td>操作</td>
                 <td>登录名称</td>
                 <td>中文名称</td>
+                <td>工号</td>
                 <td>科室-职称</td>
                 <td>手机</td>
                 <td>邮箱</td>
@@ -44,6 +45,7 @@ if (empty($objs)) {
         $dataList .= "<td><a class=\"button button-orange\" href=\"" . Url::siteUrl("chibi/user/userModify?id={$obj->id}")  . "\"><span class=\"pencil\"></span>编辑</a></td>\n";
         $dataList .= "<td><a href=\"".Url::siteUrl("chibi/user/userModify?id={$obj->id}")."\">{$obj->userName}</a></td>\n";
         $dataList .= "<td>{$obj->alias}</td>\n";
+        $dataList .= "<td>{$obj->workId}</td>\n";
         $dataList .= "<td>{$obj->getDept()} - {$obj->getJob()}</td>\n";
         $dataList .= "<td>{$obj->mobile}</td>\n";
         $dataList .= "<td>{$obj->email}</td>\n";
