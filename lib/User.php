@@ -51,7 +51,7 @@ class User extends Data {
             'text' => '邮箱地址', 'required' => true, 'rule' => '/^[a-zA-Z0-9_\.\-]+\@([a-zA-Z0-9\-]+\.)+[a-zA-Z0-9]{2,4}$/', 'size' => '30', 'tip' => '不符合规范', 'hint' => '如:xyz@abc.com',
         ),
         'description' => array(
-            'text' => '简介', 'type' => 'ckeditor',
+            'text' => '简介', 'type' => 'ckeditor', 'width' => 850
         ),
         'sex' => array(
             'text' => '性别', 'required' => true, 'type' => 'radio', 'options' => array(), 'tip' => '未选择性别',
