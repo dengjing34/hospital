@@ -3,7 +3,7 @@
 class User extends Data {
 
     public $id, $userName, $alias, $avatar, $password, $job, $dept, $mobile, $status, $sex, $role, $roleId, $email, $description, $createdTime, $updatedTime, $attributeData;
-
+    public $workId;
     const STATUS_ACTIVE = 1;
     const STATUS_LEAVE = 2;
     const STATUS_STOP = 3;
@@ -28,6 +28,9 @@ class User extends Data {
         ),
         'alias' => array(
             'text' => '中文名称', 'required' => true, 'hint' => '不能为空', 'size' => '30', 'tip' => '请填写用户的中文名称'
+        ),
+        'workId' => array(
+            'text' => '工号', 'required' => true, 'hint' => '不能为空', 'size' => '30', 'tip' => '请填写用户的工号'
         ),
         'avatar' => array(
             'text' => '照片', 'type' => 'file', 'required' => true, 'hint' => '请上传长宽为200*239像素的照片', 'size' => 40, 'tip' => '必须上传照片', //'resizable' => true, //'watermark' => Uploader::WATER_MARK_TEXT,
@@ -75,6 +78,7 @@ class User extends Data {
                 'id' => 'id',
                 'userName' => 'userName',
                 'alias' => 'alias',
+                'workId' => 'workId',
                 'avatar' => 'avatar',
                 'job' => 'job',
                 'dept' => 'dept',
@@ -107,10 +111,11 @@ class User extends Data {
         if (!preg_match("/^1[358]\d{9}$/", $this->mobile)) throw new Exception("mobile:{$this->mobile} is not a regular mobile!");
         if (!preg_match("/^[a-zA-Z0-9_\.\-]+\@([a-zA-Z0-9\-]+\.)+[a-zA-Z0-9]{2,4}$/", $this->email)) throw new Exception("email:{$this->email} is not a regular email address!");
         if (is_null($this->roleId)) throw new Exception("please select a role for {$this->userName}");
+        if (strlen($this->workId) == 0) throw new Exception('工号不能为空');
         if (is_null($this->id)) {
             $this->password = md5($this->userName . $this->password);
             $this->createdTime = $this->updatedTime = time();
-            foreach (array ('userName', 'mobile', 'email') as $val) {
+            foreach (array ('userName', 'mobile', 'email', 'workId') as $val) {
                 $obj = new $this->className;
                 $obj->$val = $this->$val;
                 $total = $obj->count(array(
@@ -120,7 +125,7 @@ class User extends Data {
             }
             $insertFlag = true;
         } else {
-            foreach (array ('userName', 'mobile', 'email') as $val) {
+            foreach (array ('userName', 'mobile', 'email', 'workId') as $val) {
                 $obj = new $this->className;
                 $obj->$val = $this->$val;
                 $total = $obj->count(array(
