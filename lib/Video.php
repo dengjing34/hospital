@@ -43,11 +43,9 @@ class Video extends Data {
     public function playerScript($container = self::PLAYER_WRAPPER, $width = self::PLAYER_WIDTH, $height = self::PLAYER_HEIGHT) {
         $swfobject = Url::siteUrl('js/swfobject.js');
         $playswf = '/images/player.swf';
-        $filePath = $this->filePath . '/' . $this->fileName;
-        $realFile = Url::videoUrl($filePath);
+        $realFile = $this->getVideoUrl();
         $pic = $this->getPreview();
-        $picPath = $pic->filePath . '/' . $pic->fileName;
-        $preview = Url::videoUrl($picPath);
+        $preview = $pic->getPicUrl();
         $html = <<<EOT
 <script type='text/javascript' src='{$swfobject}'></script>
 <script type='text/javascript'>
@@ -98,6 +96,33 @@ EOT;
             $s = $this->playLen - $h * 3600 - $m * 60;
             return "{$h}时{$m}分{$s}秒";
         }
+    }
+
+    public function getVideoUrl() {
+        $filePath = $this->filePath . '/' . $this->fileName;
+        return Url::videoUrl($filePath);
+    }
+
+    /**
+     *
+     * @param type $value
+     * @return \Video
+     */
+    public function delete($value = null) {
+        $key = $this->key;
+        if (!is_null($value)) {
+            $this->{$key} = $value;
+        }
+        if (!is_null($this->{$key})) {
+            $pic = new Pic();
+            $pic->videoGUID = $this->{$key};
+            /*@var $eachPic Pic*/
+            foreach ($pic->find() as $eachPic) {
+                $eachPic->delete($eachPic->picGUID);
+            }
+            parent::delete($value);
+        }
+        return $this;
     }
 }
 

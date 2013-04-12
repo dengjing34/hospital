@@ -55,7 +55,7 @@ pre,p{line-height:24px;}
 #wrapper{width:1000px;margin:22px auto 22px auto;background:url(../images/new/bg.jpg);z-index:1;}
 #wrapper #container{padding:30px;}
 #wrapper #container #banner{height:50px;position:relative;}
-#wrapper #container #banner #logo{position:absolute;height:43px;width:140px;background:url(../images/new/logo.png) no-repeat;}
+#wrapper #container #banner #logo{position:absolute;height:46px;width:140px;background:url(../images/new/heims_logo_new.png) no-repeat;}
 #wrapper #container #banner #message{position:absolute;height:18px;width:635px;right:0;background:url(../images/new/index_nav_dh_bg.png) no-repeat;}
 #wrapper #container #banner #message ul.marquee{display:block;position:relative;overflow:hidden;width:635;height:18px;}
 #wrapper #container #banner #message ul.marquee li{position:absolute;top:-999em;left:0;display:block;white-space:nowrap;padding:0 10px;}
@@ -180,7 +180,10 @@ pre,p{line-height:24px;}
 /*.grid end*/
 
 .video-list{background:#cce8de;width:250px;height:400px;float:right;padding:5px 5px;overflow-y:auto;overflow-x:hidden;}
-.video-list dl{float:left;width:250px;height:159px;}
+.video-list dl{float:left;width:250px;height:144px;margin-top:5px;}
 .video-list dt{float:left;padding-right:10px;}
 .video-list dd{padding:0 0 3px 0;}
 .video-list dd span{display:block;color:#4CC3D4;padding:0 0 3px 0;}
+/*.btn-yellow*/
+a.btn-yellow:link,a.btn-yellow:visited,a.btn-yellow:hover,a.btn-yellow:active{color: white;font-weight:normal;line-height:18px;text-align:center;width:40px;height:19px;background:url(../images/new/yellow-btn.png) no-repeat 0px 0px;display:inline-block;}
+a.btn-yellow:hover{background-position:0px -19px;color:gray;}

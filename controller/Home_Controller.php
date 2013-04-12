@@ -159,5 +159,17 @@ class Home_Controller extends Controller{
         $view = new View('home/view',  compact('o', 'videos', 'currVideo', 'user', 'fav'));
         $this->render($view->render());
     }
+
+    public function delete_video() {
+        $id = $this->url->get('id');
+        if (ctype_digit($id)) {
+            $video = new Video();
+            $video->delete($id);
+            $msg = "删除成功, 请<a href=\"" . Url::getRefer() . "\">返回</a>";
+        } else {
+            $msg = "{$id} 不是数字";
+        }
+        $this->render($msg);
+    }
 }
 ?>

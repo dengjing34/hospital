@@ -37,6 +37,7 @@ EOT;
 foreach ($videos as $eachVideo) {
     if ($eachVideo->videoGUID == $currVideo->videoGUID) continue;
     $videoLink = Url::siteUrl("view?id={$o->optGUID}&vid={$eachVideo->videoGUID}");
+    $deleteUrl = Url::siteUrl("delete_video?id={$eachVideo->videoGUID}");
     $picSrc = Url::siteUrl('images/new/ny_main_sp_1.jpg');
     echo <<<EOT
 <dl>
@@ -47,6 +48,12 @@ foreach ($videos as $eachVideo) {
     <dd>开始：{$eachVideo->getBeginTM()}</dd>
     <dd>结束：{$eachVideo->getEndTM()}</dd>
 </dl>
+<p>
+    <a class="btn-yellow" href="{$videoLink}">预览</a>
+    <a class="btn-yellow" href="{$eachVideo->getVideoUrl()}">下载</a>
+    <a class="btn-yellow" href="{$deleteUrl}" onclick="return confirm('确定要删除该视频？')">删除</a>
+    <a class="btn-yellow" href="">更新</a>
+</p>
 EOT;
 }
 ?>

@@ -25,6 +25,15 @@ class Pic extends Data{
         );
         parent::init($options);
     }
+
+    /**
+     * 获取视频预览图片的url地址
+     * @return string
+     */
+    public function getPicUrl() {
+        $picPath = $this->filePath . '/' . $this->fileName;
+        return Url::videoUrl($picPath);
+    }
 }
 
 ?>
