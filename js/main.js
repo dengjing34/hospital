@@ -5,7 +5,7 @@ var _global_ = {
             {userId:userId, operationId:operationId, rand:Math.random()},
             function(json){
                 if (json.status == 'success') {
-                    obj.after('<a href="#" onclick="return _global_.favCancel(' + userId + ', ' + operationId + ',' + '$(this))">已收藏</span>');
+                    obj.after('<a href="#" class="btn-big borrow" onclick="return _global_.favCancel(' + userId + ', ' + operationId + ',' + '$(this))">已借阅</span>');
                     obj.remove();
                 } else {
                     alert(json.msg);
@@ -21,7 +21,7 @@ var _global_ = {
             {userId:userId, operationId:operationId, rand:Math.random()},
             function(json){
                 if (json.status == 'success') {
-                    obj.after('<a href="#" onclick="return _global_.favAdd(' + userId + ', ' + operationId + ',' + '$(this))">收藏</span>');
+                    obj.after('<a href="#" class="btn-big favor" onclick="return _global_.favAdd(' + userId + ', ' + operationId + ',' + '$(this))">收藏</span>');
                     obj.remove();
                 } else {
                     alert(json.msg);

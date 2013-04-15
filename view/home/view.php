@@ -5,20 +5,10 @@
 ?>
 
 <h2><?php echo $o->optName . ' &gt; ' . $currVideo->videoTitle?>
-    <?php
-    if ($fav) {
-        echo <<<EOT
-<a href="#" onclick="return _global_.favCancel({$user['id']}, {$o->optGUID}, $(this));">已收藏</a>
-EOT;
-    } else {
-        echo <<<EOT
-<a href="#" onclick="return _global_.favAdd({$user['id']}, {$o->optGUID}, $(this));">收藏</a>
-EOT;
-    }?>
 </h2>
 <div style="float:left;">
     <div id="player-wrapper" style="width:545px;height:410px;">没有视频</div>
-    <div>
+    <div style="position:relative;">
         <?php
         echo <<<EOT
 <p style="width:545px;">
@@ -28,6 +18,18 @@ EOT;
 </p>
 EOT;
         ?>
+        <div style="position:absolute;right:0;top:5px;">
+    <?php
+    if ($fav) {
+        echo <<<EOT
+<a href="#" class="btn-big borrow" onclick="return _global_.favCancel({$user['id']}, {$o->optGUID}, $(this));">已借阅</a>
+EOT;
+    } else {
+        echo <<<EOT
+<a href="#" class="btn-big favor" onclick="return _global_.favAdd({$user['id']}, {$o->optGUID}, $(this));">收藏</a>
+EOT;
+    }?>
+        </div>
     </div>
 </div>
 
@@ -38,10 +40,10 @@ foreach ($videos as $eachVideo) {
     if ($eachVideo->videoGUID == $currVideo->videoGUID) continue;
     $videoLink = Url::siteUrl("view?id={$o->optGUID}&vid={$eachVideo->videoGUID}");
     $deleteUrl = Url::siteUrl("delete_video?id={$eachVideo->videoGUID}");
-    $picSrc = Url::siteUrl('images/new/ny_main_sp_1.jpg');
+    $picError = Url::siteUrl('images/new/ny_main_sp_1.jpg');
     echo <<<EOT
 <dl>
-    <dt><a href="{$videoLink}"><img src="{$picSrc}" /></a></dt>
+    <dt><a href="{$videoLink}"><img src="{$eachVideo->getPreview()->getPicUrl()}"} onerror="this.src='{$picError}'" /></a></dt>
     <dd>标题：{$eachVideo->videoTitle}</dd>
     <dd>大小：{$eachVideo->getFileSize()}</dd>
     <dd>时长：{$eachVideo->getPlayLen()}</dd>
