@@ -31,8 +31,28 @@ class Url {
         return UPLOAD_URL . $filePath;
     }
 	
-	public static function videoUrl($filePath) {
+    public static function videoUrl($filePath) {
         return VIDEO_URL . preg_replace('/.*手术室1\//', '', $filePath);
+    }
+    
+    public static function downloadFile($file, $saveAsFile = null) {
+        if (is_null($saveAsFile)) {
+            $saveAsFile = pathinfo($file, PATHINFO_BASENAME);
+        }
+        if (is_file($file)) {
+            header('Content-Description: File Transfer');
+            header("Content-type: application/octet-stream");
+            header("Content-disposition: attachment; filename={$saveAsFile}");
+            header('Pragma: public');
+            header("Content-length: " . filesize($file));
+            header('Cache-Control: must-revalidate');
+            header("Expires: 0");
+            ob_clean();
+            flush();
+            readfile($file);  
+        } else {
+            throw new Exception("file : {$saveAsFile} not exists");
+        }
     }
     
     private static function generateImage($filePath, $type) {

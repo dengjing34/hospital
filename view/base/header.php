@@ -41,11 +41,6 @@ $(function(){
             <div id="message">
                 <ul class="marquee">
                     <li>信息文字:最新的手术视频已经上传到脑科手术中，欢迎观看。</li>
-                    <li>Class aptent taciti sociosqu ad litora torquent per conubia nostra</li>
-                    <li>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce tincidunt adipiscing,massa.</li>
-                    <li>Mauris ullamcorper euismod leo. Nulla congue tellus vitae ante at pede eu ligula lacinia. Integer sed sapien, rutrum nec.</li>
-                    <li>Aliquam erat volutpat. Fusce dolor. Vestibulum ornare congue turpis sollicitudin nunc elit. Nullam erat neque, facilisis quis.</li>
-                    <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam non eros sed facilisis, bibendum eu.</li>
                 </ul>
             </div>
         </div>

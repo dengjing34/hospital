@@ -7,8 +7,8 @@
 class Video extends Data {
     public $videoGUID, $optGUID, $videoTitle, $saveIP, $fileName, $filePath, $beginTM, $endTM, $fileSize, $playLen;
 
-    const PLAYER_WIDTH = 545;
-    const PLAYER_HEIGHT = 410;
+    const PLAYER_WIDTH = 436;
+    const PLAYER_HEIGHT = 328;
     const PLAYER_DEFAULT_VIDEO = 'images/GoogleImaginaryForces.mp4';
     const PLAYER_DEFAULT_PREVIEW = 'images/Preview.jpg';
     const PLAYER_WRAPPER = 'player-wrapper';
@@ -84,6 +84,11 @@ EOT;
     public function getEndTM() {
         return date('Y-m-d H:i:s', $this->endTM);
     }
+    
+    
+    public function getVideoPath() {
+        return "{$this->filePath}/{$this->fileName}";
+    }
 
     public function getPlayLen() {
         if ($this->playLen < 60) {
@@ -98,6 +103,10 @@ EOT;
         }
     }
 
+    /**
+     * 获取视频的在线url
+     * @return string
+     */
     public function getVideoUrl() {
         $filePath = $this->filePath . '/' . $this->fileName;
         return Url::videoUrl($filePath);

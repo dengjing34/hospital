@@ -171,5 +171,20 @@ class Home_Controller extends Controller{
         }
         $this->render($msg);
     }
+    
+    public function download() {
+        $id = $this->url->get('id');
+        if (ctype_digit($id)) {
+            $video = new Video();
+            try {
+                $video->load($id);
+                $this->url->downloadFile($video->getVideoPath());
+            } catch (Exception $e) {
+                $this->error($e->getMessage());
+            }            
+        } else {
+            $this->error("video {$id} not found");
+        }
+    }
 }
 ?>

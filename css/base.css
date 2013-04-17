@@ -179,8 +179,8 @@ pre,p{line-height:24px;}
 .grid .trBg{background:#C5DDF2 ;border-top:0px;font-weight:bold;}
 /*.grid end*/
 
-.video-list{background:#cce8de;width:250px;height:400px;float:right;padding:5px 5px;overflow-y:auto;overflow-x:hidden;}
-.video-list dl{float:left;width:250px;height:144px;margin-top:5px;}
+.video-list{background:#cce8de;width:359px;height:460px;float:right;padding:5px 5px;overflow-y:auto;overflow-x:hidden;}
+.video-list dl{float:left;width:359px;height:144px;margin-top:5px;}
 .video-list dt{float:left;padding-right:10px;}
 .video-list dt a img{width:127px;height:143px;}
 .video-list dd{padding:0 0 3px 0;}
@@ -189,8 +189,16 @@ pre,p{line-height:24px;}
 a.btn-yellow:link,a.btn-yellow:visited,a.btn-yellow:hover,a.btn-yellow:active{color: white;font-weight:normal;line-height:18px;text-align:center;width:40px;height:19px;background:url(../images/new/yellow-btn.png) no-repeat 0px 0px;display:inline-block;}
 a.btn-yellow:hover{background-position:0px -19px;color:gray;}
 /*.btn-big*/
-a.btn-big:link,a.btn-big:visited,a.btn-big:hover,a.btn-big:active{text-indent:-9999px;color: white;font-weight:normal;line-height:18px;text-align:center;width:79px;height:34px;background:url(../images/new/big-btn.png) no-repeat;display:inline-block;}
+a.btn-big:link,a.btn-big:visited,a.btn-big:hover,a.btn-big:active{text-indent:-9999px;color: white;font-weight:normal;line-height:18px;text-align:center;width:79px;height:34px;background:url(../images/new/big-btn-1.png) no-repeat;display:inline-block;}
 a.borrow:link,a.borrow:visited,a.borrow:hover,a.borrow:active{background-position:0 -34px;}
 a.borrow:hover{background-position:0 0;}
 a.favor:link,a.favor:visited,a.favor:hover,a.favor:active{background-position:0 -238px;}
 a.favor:hover{background-position:0 -204px;}
+a.download:link,a.download:visited,a.download:hover,a.download:active{background-position:0 -340px;}
+a.download:hover{background-position:0 -374px;}
+a.preview:link,a.preview:visited,a.preview:hover,a.preview:active{background-position:0 -272px;}
+a.preview:hover{background-position:0 -306px;}
+a.delete:link,a.delete:visited,a.delete:hover,a.delete:active{background-position:0 -408px;}
+a.delete:hover{background-position:0 -442px;}
+a.update:link,a.update:visited,a.update:hover,a.update:active{background-position:0 -476px;}
+a.update:hover{background-position:0 -510px;}
