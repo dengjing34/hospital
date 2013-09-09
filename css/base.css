@@ -52,7 +52,7 @@ pre,p{line-height:24px;}
 #header #nav-inner ul li button{background:url(../images/new/nav_bg.png) no-repeat;height:22px;width:87px;border:none;color:white;cursor:pointer;}
 #header #nav-inner ul li button:hover{background:url(../images/new/nav_bg_current.png);}
 /*#wrapper*/
-#wrapper{width:1000px;margin:22px auto 22px auto;background:url(../images/new/bg.jpg);z-index:1;}
+#wrapper{width:1000px;margin:22px auto 22px auto;/*background:url(../images/new/bg.jpg)*/;z-index:1;}
 #wrapper #container{padding:30px;}
 #wrapper #container #banner{height:50px;position:relative;}
 #wrapper #container #banner #logo{position:absolute;height:46px;width:140px;background:url(../images/new/heims_logo_new.png) no-repeat;}
